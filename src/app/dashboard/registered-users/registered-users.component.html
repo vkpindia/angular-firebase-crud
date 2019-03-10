@@ -1,0 +1,192 @@
+<div>
+  <div class="container heading">
+    <div *ngIf="showTable" class="heading">
+      <h4 align="center" class="headline"><span class="tableCaption">Registered users</span></h4>
+      <span class="fa fa-plus-circle" (click)="showForm()" style="color: blue; font-size: 25px; cursor: pointer"></span>
+    </div>
+    <!-- <app-user-form class="userForm" *ngIf="!showTable" [employeeData]="usersData" [employeeRecord]="selectedEmployee" (addEmployeeRecord)="addRecord($event)"></app-user-form> -->
+    <div>
+      <div class="input-group col-sm-3" *ngIf="showTable">
+        <input type="search" class="form-control" name="search" placeholder="Seach by name" id="empSearch" [(ngModel)]="searchText">
+        <div class="input-group-btn">
+          <button class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+      <table class="table table-striped" *ngIf="showTable">
+        <thead class="tableHead">
+          <tr>
+            <th>SN.</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usersData | filter: 'userName': searchText ; index as i">
+            <td>{{i+1}}</td>
+            <td>{{user.userName}}</td>
+            <td>{{user.gender}}</td>
+            <td>{{user.myEmail}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.city}}</td>
+            <td><span class="fa fa-eye" (click)="viewRecord(user); showModal=true" style="color:green; cursor: pointer"></span></td>
+            <td><span class="fa fa-edit" style="color:blue; cursor: pointer" (click)="showForm(user, i);"></span></td>
+            <td><span class="fa fa-trash" style="color:red; cursor: pointer" (click)="deleteModel=true;openDeleteModel(i)"></span></td>
+          </tr>
+        </tbody>
+      </table><br><br>
+    </div>
+    <!-- Modal Dialog for View -->
+    <div class="modal" id="myModal" [ngClass]="{'show': showModal}" style="top:25%;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Record view</h4>
+            <!-- <button type="button" class="close" data-dismiss="modal" (click)="showModal=false">&times;</button> -->
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-4"><span><strong>Name:</strong>&nbsp;{{viewItem?.userName}}</span></div>
+              <div class="col-sm-4"><span><strong>Gender:</strong>&nbsp;{{viewItem?.gender}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4"><span><strong>City:</strong>&nbsp;{{viewItem?.city}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6"><span><strong>Phone:&nbsp;</strong>{{viewItem?.phone}}</span></div>
+              <div class="col-sm-6"><span><strong>Email:</strong>&nbsp;{{viewItem?.myEmail}}</span></div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="showModal=false">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Dialog for Delete -->
+    <div class="modal" id="myModal" [ngClass]="{'show': deleteModel}" style="top:25%;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Are you sure you want to delete?
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="deleteRecord(); deleteModel=false">Yes</button>
+            <button type="button" class="btn btn-danger" (click)="deleteModel=false">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br>
+
+<!-- Registration Form -->
+<div class="container" *ngIf="!showTable">
+  <div class="registrationPage">
+    <div class="container">
+      <!-- Registration Form -->
+      <div class="registrationPageForm">
+        <span class="anchor" id="formLogin"></span>
+  
+        <!-- form card login with validation feedback -->
+        <div class="card card-outline-primary">
+          <div class="card-header ">
+            <h5 class="mb-0 card-te">User registration</h5>
+          </div>
+          <div class="card-body">
+            <form class="form" [formGroup]="registrationForm" role="form" (ngSubmit)="submitRecord()" autocomplete="off" id="registerForm"
+              method="POST" novalidate>
+              <div class="form-group" hidden>
+                <label>ID</label>
+                <input type="text" class="form-control" formControlName="id" name="myId" id="pwd1" #empId>
+                <!-- <div class="invalid-feedback">Please enter your name</div>  -->
+              </div>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Name" formControlName="userName" required>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls.userName.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
+                  [ngClass]=" 'error'">Name is required!</div>
+              </div>
+  
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Email" formControlName="myEmail" required>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls.myEmail.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
+                  [ngClass]=" 'error'"> Email is required and should be proper formate!</div>
+              </div>
+  
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" class="form-control" placeholder="Phone" formControlName="phone" required>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls.phone.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
+                  [ngClass]=" 'error'">phone is required!</div>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" formControlName="password" required #pass>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls.password.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                  [ngClass]=" 'error'">Password is required!</div>
+              </div>
+              <div class="form-group">
+                <label for="">Gender</label>
+                <div class="radio">
+                  <label><input type="radio" formControlName="gender" value="male">Male</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" formControlName="gender" value="female">Female</label>
+                </div>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls.gender.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                  [ngClass]=" 'error'">Gender is required!</div>
+              </div>
+              <div class="form-group">
+                <label for="myCity">Choose city: &nbsp;</label>
+                <select id="myCity" formControlName="city" required>
+                  <option value="null" disabled selected>Choose city</option>
+                  <option *ngFor="let city of cities" [value]="city"> {{ city }}
+                </select>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls.city.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                  [ngClass]=" 'error'">City is required!</div>
+              </div>
+  
+              <div class="form-group">
+                <div class="checkbox">
+                  <label for=""><input type="checkbox" formControlName="isTCAccepted">&nbsp; Accept T & C</label>
+                </div>
+                <div class="alert alert-danger" *ngIf="registrationForm.controls.isTCAccepted.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                  [ngClass]=" 'error'">Accept T & C!</div>
+              </div>
+              <button type="submit" class="btn btn-success btn-lg" id="btnkLogin">{{buttonLabel}}</button> &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <button type="reset" class="btn btn-success btn-lg" id="btnCancel" (click)="showTable=true; registrationForm.reset()">Cancel</button>
+              <!-- <span>Have you already registered? &nbsp; &nbsp;<a href="javascript:void(0)" (click)="login()">Log in</a></span> -->
+            </form>
+          </div>
+          <!--/card-body-->
+        </div>
+        <!-- /form card login -->
+      </div>
+    </div>
+  </div>
+</div>

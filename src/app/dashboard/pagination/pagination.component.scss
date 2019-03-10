@@ -1,0 +1,62 @@
+
+.mat-card{
+    background: #b9b8b8;
+}
+.datatable{
+    background: #fff;
+    .table-search{
+      display: flex;
+      padding: 20px;
+      label{
+          font-weight: normal;
+          font-size: 16px;
+      }
+      .row-count{
+          flex: 1;
+          select{
+              padding: 5px;
+          }
+      }
+      .search{
+          input{
+              width: 150px;
+              padding: 5px;
+          }
+      }
+
+    }
+    .v-table{
+        background: #fff;
+        table{
+            width: 100%;
+            background: #fff;
+            border-collapse: collapse;
+            font-size: 16px;
+            thead{
+                background: #e4e5e6;
+                th{
+                    font-weight: normal;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                    padding: 5px 10px;
+                }
+            }
+            tbody{
+                td{
+                    border-bottom: 1px solid #ddd;
+                    text-align: left;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+    .v-table-pagination{
+        padding: 20px;
+      ul{
+          margin: 0;
+        a{
+           cursor: pointer;
+        }
+      }
+    }
+}

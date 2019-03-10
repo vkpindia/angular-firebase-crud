@@ -1,0 +1,40 @@
+/* #about{
+    margin-top:100px;
+} */
+.bg-grey {
+    background-color: #f6f6f6;
+}
+.logo-small {
+    color: rgb(119, 27, 146);
+    font-size: 50px;
+}
+.logo {
+    color: rgb(119, 27, 146);
+    font-size: 200px;
+}
+.slideanim {visibility:hidden;}
+.slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+}
+.btn-lg{
+    margin-bottom:50px;
+}
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }

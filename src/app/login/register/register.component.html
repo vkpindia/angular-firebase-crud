@@ -1,0 +1,83 @@
+<div class="registrationPage">
+  <div class="container">
+    <!-- Registration Form -->
+    <div class="registrationPageForm">
+      <span class="anchor" id="formLogin"></span>
+
+      <!-- form card login with validation feedback -->
+      <div class="card card-outline-primary">
+        <div class="card-header ">
+          <h5 class="mb-0 card-te">User registration</h5>
+        </div>
+        <div class="card-body">
+          <form class="form" [formGroup]="registrationForm" role="form" (ngSubmit)="register()" autocomplete="off" id="registerForm"
+            method="POST" novalidate>
+            <div class="form-group" hidden>
+              <label>ID</label>
+              <input type="text" class="form-control" formControlName="id" name="myId" id="pwd1" #empId>
+              <!-- <div class="invalid-feedback">Please enter your name</div>  -->
+            </div>
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Name" formControlName="userName" required>
+              <div class="alert alert-danger" *ngIf="registrationForm.controls.userName.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
+                [ngClass]=" 'error'">Name is required!</div>
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" placeholder="Email" formControlName="myEmail" required>
+              <div class="alert alert-danger" *ngIf="registrationForm.controls.myEmail.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
+                [ngClass]=" 'error'"> Email is required and should be proper formate!</div>
+            </div>
+
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" class="form-control" placeholder="Phone" formControlName="phone" required>
+              <div class="alert alert-danger" *ngIf="registrationForm.controls.phone.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
+                [ngClass]=" 'error'">phone is required!</div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+              <div class="alert alert-danger" *ngIf="registrationForm.controls.password.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                [ngClass]=" 'error'">Password is required!</div>
+            </div>
+            <div class="form-group">
+              <label for="">Gender</label>
+              <div class="radio">
+                <label><input type="radio" formControlName="gender" value="male">Male</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" formControlName="gender" value="female">Female</label>
+              </div>
+              <div class="alert alert-danger" *ngIf="registrationForm.controls.gender.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                [ngClass]=" 'error'">Gender is required!</div>
+            </div>
+            <div class="form-group">
+              <label for="myCity">Choose city: &nbsp;</label>
+              <select id="myCity" formControlName="city" required>
+                <option value="null" disabled selected>Choose city</option>
+                <option *ngFor="let city of cities" [value]="city"> {{ city }}
+              </select>
+              <div class="alert alert-danger" *ngIf="registrationForm.controls.city.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                [ngClass]=" 'error'">City is required!</div>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label for=""><input type="checkbox" formControlName="isTCAccepted">&nbsp; Accept T & C</label>
+              </div>
+              <div class="alert alert-danger" *ngIf="registrationForm.controls.isTCAccepted.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
+                [ngClass]=" 'error'">Accept T & C!</div>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg" id="btnkLogin">Register</button> &nbsp;&nbsp;
+            <span>Have you already registered? &nbsp; &nbsp;<a href="javascript:void(0)" [routerLink]="'/'">Log in</a></span>
+          </form>
+        </div>
+        <!--/card-body-->
+      </div>
+      <!-- /form card login -->
+    </div>
+  </div>
+</div>

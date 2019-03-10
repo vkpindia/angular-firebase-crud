@@ -1,0 +1,51 @@
+/* .registrationPage{
+    height:100vh;
+    background-size: cover;
+    width: auto;
+    background-image: url('src/assets/images/loginback.png');
+    background-repeat: no-repeat;
+    background-position: cover;
+} */
+.registrationPageForm {
+    width: 500px;
+    position:absolute;
+    top:50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -250px;
+
+}
+.card {
+    font-size: 14px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: .3rem;
+}

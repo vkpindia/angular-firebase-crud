@@ -1,0 +1,67 @@
+<!-- <nav class="navbar navbar-expand-md navbar-dark position-fixed" style="width: 100%; top:0px"> -->
+  <!-- Brand -->
+  <!-- <div class="container">
+    <a class="navbar-brand" href="javascript:void(0)"><img src="assets\images\2000px-Free_logo.svg.png" alt="" width="100px"
+        height="30px"></a> -->
+
+    <!-- Toggler/collapsibe Button -->
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <!-- Navbar links -->
+    <!-- <div class="collapse navbar-collapse" id="collapsibleNavbar" style="justify-content: flex-end;">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['home']" [routerLinkActive]="['link']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['about-us']" [routerLinkActive]="['link']">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['gallery']" [routerLinkActive]="['link']">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['user-list']" [routerLinkActive]="['link']">User-list</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['formly-form']" [routerLinkActive]="['link']">Formly-form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['registered-users']" [routerLinkActive]="['link']">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['todo-list']" [routerLinkActive]="['link']">Todo-list</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['utility']" [routerLinkActive]="['link']">Utility</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" [routerLink]="['/']"><i class="nav-link fa fa-sign-out"></i>Sign-out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet> -->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav md-elevation-z15" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+      <mat-toolbar color="primary">Menu</mat-toolbar>
+      <mat-nav-list>
+          <app-sidenav *ngFor="let item of navItems" [item]="item"></app-sidenav>
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <mat-toolbar color="primary">
+          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          <span style="float: right !important">Angular</span>
+      </mat-toolbar>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

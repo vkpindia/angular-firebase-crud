@@ -1,0 +1,111 @@
+<div class="formly-form">
+  <h4 align="center">Formly form</h4>
+  <hr>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit(model); showModal=true">
+      <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form" style="font-size: 14px">
+        <button type="submit" class="btn btn-primary submit-button" [disabled]="!form.valid">Submit</button>&nbsp; &nbsp;
+        <button type="button" class="btn btn-danger" (click)="options.resetModel()">Reset</button> &nbsp; &nbsp;
+        <button class="btn btn-sm btn-default" (click)="toggleDisabled()">Toggle</button>
+      </formly-form>
+    </form>
+  </div><br><br>
+  <hr>
+  <h4 align="center">Formly form advanced layout</h4>
+  <hr>
+  <div class="container">
+    <form [formGroup]="formFormly" (ngSubmit)="submit1(model1)">
+      <formly-form [model]="model1" [fields]="fields1" [options]="options1" [form]="formFormly" style="font-size: 14px">
+        <button type="submit" class="btn btn-primary submit-button">Submit</button>
+      </formly-form>
+    </form>
+  </div>
+</div><br><br>
+<hr>
+<h4 align="center">Formly Json Schema</h4>
+<hr>
+<div style="width: 700px; margin: 0 auto">
+  <form [formGroup]="form2" (ngSubmit)="submit2(model2)">
+    <formly-form [model]="model2" [fields]="fields2" [options]="options2" [form]="form2" style="font-size: 14px">
+      <button type="submit" class="btn btn-primary submit-button">Submit</button>
+    </formly-form>
+  </form>
+</div><br><br>
+<hr>
+<h4 align="center">Multi-step form</h4>
+<hr>
+<div style="width: 850px; margin: 0 auto">
+  <form [formGroup]="form3" (ngSubmit)="submit3()">
+    <mat-horizontal-stepper>
+      <mat-step *ngFor="let step of steps; let index = index; let last = last;">
+        <ng-template matStepLabel>{{ step.label }}</ng-template>
+        <formly-form [form]="form3.at(index)" [model]="model3" [fields]="step.fields3" [options]="options3[index]"></formly-form>
+        <div>
+          <button *ngIf="index !== 0" matStepperPrevious class="btn btn-primary" type="button" (click)="prevStep(index)">Back</button>
+          <button *ngIf="!last" matStepperNext class="btn btn-primary" type="button" [disabled]="!form3.at(index).valid" (click)="nextStep(index)">Next</button>
+          <button *ngIf="last" class="btn btn-primary" [disabled]="!form3.valid" type="submit">Submit</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+</div><br><br>
+<hr>
+<h4 align="center">Tab Form</h4>
+<hr>
+<div style="width: 800px; margin: 0 auto">
+  <form [formGroup]="form4" (ngSubmit)="submit4()">
+    <mat-tab-group>
+      <mat-tab *ngFor="let tab of tabs;let index = index;" [label]="tab.label" [disabled]="index !== 0 && !form4.at(index - 1)?.valid">
+        <formly-form [form]="form4.at(index)" [model]="model" [fields]="tab.fields4" [options]="options4[index]">
+        </formly-form>
+      </mat-tab>
+      <mat-tab label="Submit">
+        <div>
+          <button mat-raised-button class="btn btn-primary" [disabled]="!form4.valid" type="submit">Submit</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+</div>
+<hr>
+
+  <!-- Modal Dialog for View -->
+  <div class="modal" id="myModal" [ngClass]="{'show': showModal}" style="top:25%;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Record view</h4>
+          <!-- <button type="button" class="close" data-dismiss="modal" (click)="showModal=false">&times;</button> -->
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-4"><span><strong>Name:</strong>&nbsp;{{model?.name}}</span></div>
+            <div class="col-sm-4"><span><strong>Password:</strong>&nbsp;{{model?.password}}</span></div>
+            <div class="col-sm-4"><span><strong>Gender:</strong>&nbsp;{{model?.gender}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"><span><strong>City:</strong>&nbsp;{{model?.city}}</span></div>
+            <div class="col-sm-4"><span><strong>Married:</strong>&nbsp;{{model?.married}}</span></div>
+            <div class="col-sm-4"><span><strong>Dob:</strong>&nbsp;{{model?.dob | date}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6"><span><strong>Phone:&nbsp;</strong>{{model?.phone}}</span></div>
+            <div class="col-sm-6"><span><strong>Email:</strong>&nbsp;{{model?.email}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12"><span><strong>Message:&nbsp;</strong>{{model?.message}}</span></div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="showModal=false">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

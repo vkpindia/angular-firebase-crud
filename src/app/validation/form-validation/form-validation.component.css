@@ -1,0 +1,16 @@
+/* .formly-form{
+    margin-top: 70px;
+} */
+.container{
+    width: 500px;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+.modal.show {
+    display:block;
+  }

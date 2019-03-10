@@ -1,0 +1,118 @@
+<div>
+  <div class="container heading">
+    <div *ngIf="showTable" class="heading">
+      <h4 align="center" class="headline"><span class="tableCaption">User list</span></h4>
+      <span class="fa fa-plus-circle" (click)="loadForm()" style="color: blue; font-size: 25px; cursor: pointer"></span>
+    </div>
+    <app-user-form class="userForm" *ngIf="!showTable" [employeeData]="usersData" [employeeRecord]="selectedEmployee" (addEmployeeRecord)="addRecord($event)"></app-user-form>
+    <div>
+      <div class="input-group col-sm-3" *ngIf="showTable">
+        <input type="search" class="form-control" name="search" placeholder="Seach by name" id="empSearch" [(ngModel)]="searchText">
+        <div class="input-group-btn">
+          <button class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+      <table class="table table-striped" *ngIf="showTable">
+        <thead class="tableHead">
+          <tr>
+            <th>SN.</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeList | filter: 'employeeName': searchText ; index as i">
+            <td>{{i+1}}</td>
+            <td>{{employee.employeeName}}</td>
+            <td>{{employee.department}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.myEmail}}</td>
+            <td>{{employee.phone}}</td>
+            <td>{{employee.city}}</td>
+          <!-- <tr *ngFor="let user of usersData | filter: 'userName': searchText ; index as i">
+            <td>{{i+1}}</td>
+            <td>{{user.userName}}</td>
+            <td>{{user.gender}}</td>
+            <td>{{user.myEmail}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.city}}</td> -->
+            <td><span class="fa fa-eye" (click)="viewRecord(employee); showModal=true" style="color:green; cursor: pointer"></span></td>
+            <td><span class="fa fa-edit" style="color:blue; cursor: pointer" (click)="editRecord(employee)"></span></td>
+            <td><span class="fa fa-trash" style="color:red; cursor: pointer" (click)="deleteModel=true;openDeleteModel(user)"></span></td>
+          </tr>
+        </tbody>
+      </table><br><br>
+    </div>
+    <!-- Modal Dialog for View -->
+    <div class="modal" id="myModal" [ngClass]="{'show': showModal}" style="top:25%;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Record view</h4>
+            <!-- <button type="button" class="close" data-dismiss="modal" (click)="showModal=false">&times;</button> -->
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-4"><span><strong>Name:</strong>&nbsp;{{viewItem?.employeeName}}</span></div>
+              <div class="col-sm-4"><span><strong>Department:</strong>&nbsp;{{viewItem?.department}}</span></div>
+              <div class="col-sm-4"><span><strong>Gender:</strong>&nbsp;{{viewItem?.gender}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4"><span><strong>City:</strong>&nbsp;{{viewItem?.city}}</span></div>
+              <div class="col-sm-4"><span><strong>Married:</strong>&nbsp;{{viewItem?.married}}</span></div>
+              <div class="col-sm-4"><span><strong>Cars:</strong>&nbsp;{{viewItem?.cars.length}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6"><span><strong>Phone:&nbsp;</strong>{{viewItem?.phone}}</span></div>
+              <div class="col-sm-6"><span><strong>Email:</strong>&nbsp;{{viewItem?.myEmail}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12"><span><strong>Message:&nbsp;</strong>{{viewItem?.message}}</span></div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="showModal=false">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Dialog for Delete -->
+    <div class="modal" id="myModal" [ngClass]="{'show': deleteModel}" style="top:25%;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Are you sure you want to delete?
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="deleteRecord(); deleteModel=false">Yes</button>
+            <button type="button" class="btn btn-danger" (click)="deleteModel=false">No</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

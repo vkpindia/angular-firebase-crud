@@ -1,0 +1,22 @@
+<div class=" container myGallery">
+  <label for="imageCount">Count:</label>&nbsp; &nbsp;
+  <!-- <select name="" id="imageCount" [(ngModel)]="m">
+  <option value="null" disabled selected>Choose city</option>
+            <option *ngFor="let city of cities" [value]="city"> {{ city }}
+</select> -->
+  <mat-form-field style="width:70px;">
+    <mat-select placeholder="Count" [(ngModel)]="m">
+      <mat-option [value]="count" *ngFor="let count of imgCount">
+        {{count}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="container image">
+  <div class="imageGrid">
+    <div *ngFor="let image of imgDetails | slice:0:m" class="imgGrid">
+      <img src="assets/images/{{image.src}}" alt="Image not found" width="500px" height="270px"><br>
+      <span>{{image.name}}</span>
+    </div>
+  </div>
+</div>
