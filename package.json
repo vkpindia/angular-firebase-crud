@@ -28,7 +28,7 @@
     "@ngx-formly/core": "^4.8.2",
     "@ngx-formly/material": "^4.8.2",
     "angularfire2": "^5.1.0",
-    "bootstrap": "^4.1.3",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "firebase": "^5.5.8",
     "font-awesome": "^4.7.0",
