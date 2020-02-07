@@ -33,18 +33,17 @@ export class UserListComponent implements OnInit {
     }
   ];
 
-  public usersData: any [];
+  public usersData: any[];
   public userKey: any;
   public selectedEmployee: any;
   public viewItem: any;
   public showTable = true;
   public showButton = true;
- // public selectedEmployeeIndex = 0;
- public selectedEmployeeIndex;
-  public text;
+  // public selectedEmployeeIndex = 0;
+  public selectedEmployeeIndex: number;
+  public tex: string;
 
-  constructor(private usersService: UsersService) {
-  }
+  constructor(private usersService: UsersService) {}
 
   ngOnInit() {
     this.usersService.getUsers().subscribe((usersList) => {
@@ -83,16 +82,6 @@ export class UserListComponent implements OnInit {
   }
 
   /**
-  * @description: This method is created for delete record of employeeList on modal confirmation
-  * @author: Virendra Pandey
-  * @since: 14/09/2018
-  */
-  deleteRecord() {
-    // this.usersService.deleteUsers(this.selectedEmployeeIndex);
-    this.employeeList.splice(this.selectedEmployeeIndex, 1);
-  }
-
-  /**
  * @description: This method is created for open confirmation pop-up based on index
  * @param index : It takes a parameter for Array index of employeeList
  * @author: Virendra Pandey
@@ -104,11 +93,22 @@ export class UserListComponent implements OnInit {
   }
 
   /**
+  * @description: This method is created for delete record of employeeList on modal confirmation
+  * @author: Virendra Pandey
+  * @since: 14/09/2018
+  */
+  deleteRecord() {
+    // this.usersService.deleteUsers(this.selectedEmployeeIndex);
+    this.employeeList.splice(this.selectedEmployeeIndex, 1);
+  }
+
+  /**
   * @description: This method is created for Edit record of employeeList
   * @param data: It takes a parameter of employeeRecord from employeeList
   * @author: Virendra Pandey
   * @since: 14/09/2018
   */
+
   editRecord(data) {
     this.selectedEmployee = data;
     this.showTable = false;

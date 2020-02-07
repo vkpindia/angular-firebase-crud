@@ -11,18 +11,17 @@ import { MatSnackBar } from '@angular/material';
 })
 export class UserloginComponent implements OnInit {
 
-  passwordIcon = false;
-  isValidFormSubmitted = null;
-  isValidRegFormSubmitted = null;
-  showWelcome = false;
-  userEmail;
-  emailPattern = '[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}';
-  url = 'https://userlist-e580b.firebaseio.com/users.json';
+  public passwordIcon = false;
+  public isValidFormSubmitted = null;
+  public isValidRegFormSubmitted = null;
+  public showWelcome = false;
+  public userEmail;
+  public emailPattern = '[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}';
+  public url = 'https://userlist-e580b.firebaseio.com/users.json';
 
-  LoginForm = new FormGroup({
+  public loginForm = new FormGroup({
     userEmail: new FormControl('', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]),
     pass: new FormControl('', Validators.required),
-
   });
 
   constructor(private http: HttpClient,
@@ -40,13 +39,13 @@ export class UserloginComponent implements OnInit {
    */
   logIn() {
     this.isValidFormSubmitted = false;
-    if (this.LoginForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
     this.http.get(this.url).subscribe((userData) => {
       const registrationData = userData;
       Object.entries(registrationData).forEach(([key, users]) => {
-        if (this.LoginForm.value['userEmail'] === users['myEmail'] && this.LoginForm.value['pass'] === users['password']) {
+        if (this.loginForm.value['userEmail'] === users['myEmail'] && this.loginForm.value['pass'] === users['password']) {
           const welcomeMessage = `Welcome ${users['userName']}!!`;
           this.router.navigate(['module']);
           this.openSnackBar(welcomeMessage);
