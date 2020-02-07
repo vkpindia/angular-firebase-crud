@@ -14,10 +14,10 @@ import { NavService } from '../sidenav/nav.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class LayoutComponent implements OnInit, AfterViewInit {
   @ViewChild('appDrawer') appDrawer: ElementRef;
   version = VERSION;
   navItems: any = [

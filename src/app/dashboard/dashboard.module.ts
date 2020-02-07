@@ -5,7 +5,7 @@ import { MatSelectModule, MatListModule, MatIconModule, MatSidenavModule, MatBut
 import { HttpClientModule } from '@angular/common/http';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { HomeComponent } from './home/home.component';
+import { LayoutComponent } from './layout/layout.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -46,7 +46,7 @@ import { PaginationComponent } from './pagination/pagination.component';
   MatListModule
   ],
   declarations: [
-    HomeComponent,
+    LayoutComponent,
     SidenavComponent,
     UserFormComponent,
     UserListComponent,
@@ -60,6 +60,6 @@ import { PaginationComponent } from './pagination/pagination.component';
     PaginationComponent
   ],
   providers: [UsersService, TodoService],
-  bootstrap: [HomeComponent]
+  bootstrap: [LayoutComponent]
 })
 export class DashboardModule { }

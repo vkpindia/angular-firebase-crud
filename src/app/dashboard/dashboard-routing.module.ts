@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
-import { HomeComponent } from './home/home.component';
+import { LayoutComponent } from './layout/layout.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -11,7 +11,7 @@ import { UtilityComponent } from './utility/utility.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent,
+  {path: '', component: LayoutComponent,
   children: [
     {path: '', redirectTo: 'gallery', pathMatch: 'full'},
     {path: 'about-us', component: AboutUsComponent},

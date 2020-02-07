@@ -5,12 +5,12 @@
       <h3 class="">LOGIN</h3>
     </div>
     <div>
-      <form class="form" [formGroup]="LoginForm" role="form" (ngSubmit)="logIn()" autocomplete="off" id="loginForm"
+      <form class="form" [formGroup]="loginForm" role="form" (ngSubmit)="logIn()" autocomplete="off" id="loginForm"
         method="POST" novalidate>
         <div class="form-group">
           <input type="email" class="form-control" formControlName="userEmail" required>
           <label for="userEmail" class="form-control-placeholder">Email</label>
-          <div class="alert alert-danger" *ngIf="LoginForm.controls.userEmail.invalid && isValidFormSubmitted!=null && !isValidFormSubmitted"
+          <div class="alert alert-danger" *ngIf="loginForm.controls.userEmail.invalid && isValidFormSubmitted!=null && !isValidFormSubmitted"
             [ngClass]=" 'error'"> Email is required and should be proper formate!</div>
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@
           <label for="pass" class="form-control-placeholder">Password</label>
           <!-- <span class="fa fa-eye field-icon" (click)="loginPassword.type=loginPassword.type=='password'?'text':'password'; passwordIcon != passwordIcon"
             [ngClass]="passwordIcon? 'fa-eye-slash':'fa-eye'"></span> -->
-          <div class="alert alert-danger" *ngIf="LoginForm.controls.pass.invalid && isValidFormSubmitted!=null && !isValidFormSubmitted"
+          <div class="alert alert-danger" *ngIf="loginForm.controls.pass.invalid && isValidFormSubmitted!=null && !isValidFormSubmitted"
             [ngClass]=" 'error'">Password is required!</div>
         </div>
         <button type="submit" class="btn btn-primary btn-md" id="btnSubmit">LOGIN</button> &nbsp;&nbsp;
