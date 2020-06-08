@@ -1,17 +1,19 @@
 <div>
   <div class="container heading">
-    <div *ngIf="showTable" class="heading">
-      <h4 align="center" class="headline"><span class="tableCaption">User list</span></h4>
-      <span class="fa fa-plus-circle" (click)="loadForm()" style="color: blue; font-size: 25px; cursor: pointer"></span>
-    </div>
-    <app-user-form class="userForm" *ngIf="!showTable" [employeeData]="usersData" [employeeRecord]="selectedEmployee" (addEmployeeRecord)="addRecord($event)"></app-user-form>
-    <div>
+    <div class="d-flex align-items-center">
+      <div *ngIf="showTable" class="heading" style="flex:1">
+        <h4 align="center" class="headline"><span class="tableCaption">User list</span></h4>
+        <span class="fa fa-plus-circle" (click)="loadForm()" style="color: blue; font-size: 25px; cursor: pointer"></span>
+      </div>
       <div class="input-group col-sm-3" *ngIf="showTable">
         <input type="search" class="form-control" name="search" placeholder="Seach by name" id="empSearch" [(ngModel)]="searchText">
         <div class="input-group-btn">
           <button class="btn btn-default"><i class="fa fa-search"></i></button>
         </div>
       </div>
+    </div>
+    <app-user-form class="userForm" *ngIf="!showTable" [employeeData]="usersData" [employeeRecord]="selectedEmployee" (addEmployeeRecord)="addRecord($event)"></app-user-form>
+    <div>
       <table class="table table-striped" *ngIf="showTable">
         <thead class="tableHead">
           <tr>

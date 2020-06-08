@@ -11,8 +11,8 @@
     word-break: break-all;
     word-wrap: break-word;
     background-color: #f7f2d2;
-    border: none; 
-    border-radius: 0px; 
+    border: none;
+    border-radius: 0px;
 }
 .imgGrid{
     width: 502px;
@@ -22,7 +22,7 @@
     color: #fff;
     border: 1px solid #000;
     border-radius: 5px;
-    margin: 20px;
+    margin: 6px;
     float: left;
 }
 select:invalid { color: gray; }

@@ -1,17 +1,19 @@
 <div>
   <div class="container heading">
-    <div *ngIf="showTable" class="heading">
+   <div class="d-flex align-items-center">
+    <div *ngIf="showTable" class="heading" style="flex:1">
       <h4 align="center" class="headline"><span class="tableCaption">Registered users</span></h4>
       <span class="fa fa-plus-circle" (click)="showForm()" style="color: blue; font-size: 25px; cursor: pointer"></span>
     </div>
+        <div class="input-group col-sm-3" *ngIf="showTable">
+          <input type="search" class="form-control" name="search" placeholder="Seach by name" id="empSearch" [(ngModel)]="searchText">
+          <div class="input-group-btn">
+            <button class="btn btn-default"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+   </div>
     <!-- <app-user-form class="userForm" *ngIf="!showTable" [employeeData]="usersData" [employeeRecord]="selectedEmployee" (addEmployeeRecord)="addRecord($event)"></app-user-form> -->
     <div>
-      <div class="input-group col-sm-3" *ngIf="showTable">
-        <input type="search" class="form-control" name="search" placeholder="Seach by name" id="empSearch" [(ngModel)]="searchText">
-        <div class="input-group-btn">
-          <button class="btn btn-default"><i class="fa fa-search"></i></button>
-        </div>
-      </div>
       <table class="table table-striped" *ngIf="showTable">
         <thead class="tableHead">
           <tr>
@@ -109,7 +111,7 @@
       <!-- Registration Form -->
       <div class="registrationPageForm">
         <span class="anchor" id="formLogin"></span>
-  
+
         <!-- form card login with validation feedback -->
         <div class="card card-outline-primary">
           <div class="card-header ">
@@ -129,14 +131,14 @@
                 <div class="alert alert-danger" *ngIf="registrationForm.controls.userName.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
                   [ngClass]=" 'error'">Name is required!</div>
               </div>
-  
+
               <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control" placeholder="Email" formControlName="myEmail" required>
                 <div class="alert alert-danger" *ngIf="registrationForm.controls.myEmail.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted"
                   [ngClass]=" 'error'"> Email is required and should be proper formate!</div>
               </div>
-  
+
               <div class="form-group">
                 <label>Phone</label>
                 <input type="tel" class="form-control" placeholder="Phone" formControlName="phone" required>
@@ -169,7 +171,7 @@
                 <div class="alert alert-danger" *ngIf="registrationForm.controls.city.invalid && isValidRegFormSubmitted!=null && !isValidRegFormSubmitted "
                   [ngClass]=" 'error'">City is required!</div>
               </div>
-  
+
               <div class="form-group">
                 <div class="checkbox">
                   <label for=""><input type="checkbox" formControlName="isTCAccepted">&nbsp; Accept T & C</label>

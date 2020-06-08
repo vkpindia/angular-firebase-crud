@@ -1,7 +1,7 @@
 html {
     height: 100%;
   }
-  
+
   body {
     height: 100%;
     min-height: 35rem;
@@ -9,7 +9,7 @@ html {
     font-family: 'Source Sans Pro';
     font-weight: 300;
   }
-  
+
   h1,
   h2,
   h3,
@@ -19,7 +19,7 @@ html {
     font-family: 'Merriweather';
     font-weight: 700;
   }
-  
+
   video {
     position: fixed;
     top: 50%;
@@ -32,7 +32,7 @@ html {
     transform: translateX(-50%) translateY(-50%);
     z-index: 0;
   }
-  
+
   @media (pointer: coarse) and (hover: none) {
     /* body {
       background: url("e:/Virendra/myApplication/src/assets/images/bg-mobile-fallback.jpg") #002E66 no-repeat center center scroll;
@@ -42,25 +42,25 @@ html {
       display: none;
     }
   }
-  
+
   .overlay {
     position: absolute;
-    top: 0;
+    top: 64px;
     left: 0;
-    height: 100%;
+    height: calc(100% - 64px);
     width: 100%;
     background-color: #cd9557;
     opacity: 0.7;
     z-index: 1;
   }
-  
+
   .masthead {
     position: relative;
     overflow: hidden;
     padding-bottom: 3rem;
     z-index: 2;
   }
-  
+
   .masthead .masthead-bg {
     position: absolute;
     top: 0;
@@ -76,25 +76,25 @@ html {
     -webkit-transform-origin: bottom right;
     transform-origin: bottom right;
   }
-  
+
   .masthead .masthead-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .masthead .masthead-content p {
     font-size: 1.2rem;
   }
-  
+
   .masthead .masthead-content p strong {
     font-weight: 700;
   }
-  
+
   .masthead .masthead-content .input-group-newsletter input {
     height: auto;
     font-size: 1rem;
     padding: 1rem;
   }
-  
+
   .masthead .masthead-content .input-group-newsletter button {
     font-size: 0.8rem;
     font-weight: 700;
@@ -102,7 +102,7 @@ html {
     letter-spacing: 1px;
     padding: 1rem;
   }
-  
+
   @media (min-width: 768px) {
     .masthead {
       height: 100%;
@@ -128,26 +128,26 @@ html {
       font-size: 1.3rem;
     }
   }
-  
+
   .social-icons {
     position: absolute;
     margin-bottom: 2rem;
     width: 100%;
     z-index: 2;
   }
-  
+
   .social-icons ul {
     margin-top: 2rem;
     width: 100%;
     text-align: center;
   }
-  
+
   .social-icons ul > li {
     margin-left: 1rem;
     margin-right: 1rem;
     display: inline-block;
   }
-  
+
   .social-icons ul > li > a {
     display: block;
     color: white;
@@ -158,7 +158,7 @@ html {
     height: 4rem;
     width: 4rem;
   }
-  
+
   @media (min-width: 768px) {
     .social-icons {
       margin: 0;
@@ -192,17 +192,17 @@ html {
       background-color: #002E66;
     }
   }
-  
+
   .btn-secondary {
     background-color: #cd9557;
     border-color: #cd9557;
   }
-  
+
   .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
     background-color: #ba7c37 !important;
     border-color: #ba7c37 !important;
   }
-  
+
   .input {
     font-weight: 300 !important;
   }

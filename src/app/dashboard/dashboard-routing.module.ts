@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: '', component: LayoutComponent,
   children: [
     {path: '', redirectTo: 'gallery', pathMatch: 'full'},
+    {path: 'home', component: HomePageComponent},
     {path: 'about-us', component: AboutUsComponent},
     {path: 'gallery', component: GalleryComponent},
     {path: 'user-list', component: UserListComponent},
